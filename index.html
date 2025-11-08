@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio – Piyapong Damkaew</title>
+  <style>
+    :root{
+      --bg:#111111;
+      --card:#1b1b1b;
+      --muted:#c9c9c9;
+      --text:#f5f5f5;
+      --brand:#f1c40f;
+      --brand-soft:#2a2a1a;
+      --line:#2b2b2b;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,system-ui,-apple-system,sans-serif;line-height:1.6}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:1000px;margin:0 auto;padding:28px 20px 60px}
+    .header{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:24px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(241,196,15,.08),rgba(241,196,15,.0));border-radius:20px}
+    .title{font-size:28px;font-weight:800;letter-spacing:.4px}
+    .subtitle{color:var(--muted);margin-top:6px}
+    .badge{display:inline-block;background:var(--brand);color:#111;font-weight:700;padding:6px 12px;border-radius:999px;margin-top:10px}
+    .avatar{width:110px;height:110px;border-radius:16px;background:var(--brand-soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--brand);}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:24px}
+    .accent{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+    .accent .dot{width:10px;height:10px;border-radius:50%;background:var(--brand)}
+    .accent h3{margin:0}
+    .projects{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:900px){.projects{grid-template-columns:1fr}}
+    .p-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(241,196,15,.04),rgba(241,196,15,.0));border-radius:16px;padding:16px}
+    .p-meta{color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="header">
+      <div>
+        <div class="title">Piyapong Damkaew</div>
+        <div class="subtitle">Submarine Cable Field Engineer — APG System Operations | NT (National Telecom)</div>
+        <span class="badge">Yellow × Gray Theme</span>
+      </div>
+      <div class="avatar">PD</div>
+    </section>
+
+    <section class="card">
+      <div class="accent"><span class="dot"></span><h3>Overview</h3></div>
+      <p>
+        ลงเรือภาคสนามในระบบ <b>Asia Pacific Gateway (APG)</b> จำนวน 2 ครั้ง เพื่อสนับสนุนภารกิจซ่อมบำรุงและตรวจสอบการทำงานของระบบเคเบิลใต้น้ำในเขตอ่าวไทยและน่านน้ำใกล้เคียง ภายใต้ความร่วมมือกับหน่วยงาน NT และทีมงานบนเรือสากล โดยมีหน้าที่หลักในการตรวจวัดสัญญาณ, ประสานการทดสอบระหว่าง CLS และเรือ, ตรวจสอบพลังงานป้อน PFE รวมถึงร่วมทำรายงานภาคสนามหลังปฏิบัติงานเสร็จสิ้น.
+      </p>
+    </section>
+
+    <section class="card">
+      <div class="accent"><span class="dot"></span><h3>Field Operation Summary</h3></div>
+      <div class="projects">
+        <article class="p-card">
+          <div class="p-meta">ครั้งที่ 1 — Asia Pacific Gateway (APG)</div>
+          <ul>
+            <li>เข้าร่วมภารกิจ REP (Repair) บนเรือซ่อมระบบ APG บริเวณอ่าวไทย</li>
+            <li>ทำการตรวจสอบสัญญาณ OTDR ก่อนและหลังการซ่อม พร้อมเปรียบเทียบค่าการสูญเสีย</li>
+            <li>ร่วมคำนวณและตรวจสอบแรงดัน/กระแสในระบบ PFE เพื่อให้ค่ากระแสรีพีตเตอร์คงที่</li>
+            <li>ประสานงานกับ CLS และ NOC สำหรับการปรับการจ่ายไฟและการทดสอบสัญญาณ</li>
+          </ul>
+        </article>
+
+        <article class="p-card">
+          <div class="p-meta">ครั้งที่ 2 — Asia Pacific Gateway (APG)</div>
+          <ul>
+            <li>เข้าร่วมการตรวจสอบซ้ำเส้นทาง APG หลังซ่อมเสร็จ เพื่อยืนยันความเสถียรของระบบ</li>
+            <li>ตรวจสอบผลการวัดค่า ORL และ Attenuation จาก SLTE เทียบกับ baseline เดิม</li>
+            <li>ร่วมทำรายงานผลภาคสนาม (Post Operation Report) และสรุปผลให้กับฝ่าย Network</li>
+            <li>ปฏิบัติตามมาตรฐาน HSE บนเรือ และรายงานความปลอดภัยรายวัน</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="accent"><span class="dot"></span><h3>Next Step</h3></div>
+      <p>
+        (เตรียมเพิ่มภาพกิจกรรม, เอกสารผลการทดสอบ, และรายละเอียดเรือแต่ละลำในขั้นตอนต่อไป)
+      </p>
+    </section>
+  </div>
+</body>
+</html>
