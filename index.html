@@ -3,59 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio – Piyapong Damkaew</title>
+  <title>Piyapong Damkaew – Portfolio</title>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <section class="header">
-      <div>
-        <div class="title">Piyapong Damkaew</div>
-        <div class="subtitle">Submarine Cable Field Engineer — APG System Operations | NT (National Telecom)</div>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <a class="brand" href="#top">Piyapong D.</a>
+    <nav id="navMenu">
+      <a href="#about">About</a>
+      <a href="#fieldops">Field Ops</a>
+      <a href="#network">Network/Lab</a>
+      <a href="#projects">Projects</a>
+      <a href="#certs">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="menu">☰</button>
+  </header>
+
+  <!-- HEADER CARD -->
+  <section class="hero" id="top">
+    <div class="hero-text">
+      <h1>Piyapong Damkaew</h1>
+      <p class="subtitle">Submarine Cable Field Engineer — APG System Operations | NT (National Telecom)</p>
+      <div class="badges">
+        <span class="badge badge-primary" id="badgeUpdated">Yellow × Gray • Updated …</span>
         <span class="badge">Submarine Cable Engineer • APG System Operations</span>
       </div>
+    </div>
+    <div class="hero-avatar">
+      <img src="images/profile.jpg" alt="Piyapong Damkaew" class="avatar" width="220" height="220">
+    </div>
+  </section>
 
-      <!-- ใช้รูปโปรไฟล์แทน div ตัวอักษร -->
-      <img src="images/แสงแดด.jpg" alt="Piyapong Damkaew" class="avatar">
-    </section>
-
-    <section class="card">
-      <div class="accent"><span class="dot"></span><h3>Overview</h3></div>
+  <main class="container">
+    <!-- ABOUT -->
+    <section class="card" id="about">
+      <div class="accent"><span class="dot"></span><h3>About Me</h3></div>
       <p>
-        ลงเรือภาคสนามในระบบ <b>Asia Pacific Gateway (APG)</b> จำนวน 2 ครั้ง เพื่อสนับสนุนภารกิจซ่อมบำรุงและตรวจสอบการทำงานของระบบเคเบิลใต้น้ำในเขตอ่าวไทยและน่านน้ำใกล้เคียง ภายใต้ความร่วมมือกับหน่วยงาน NT และทีมงานบนเรือสากล โดยมีหน้าที่หลักในการตรวจวัดสัญญาณ, ประสานการทดสอบระหว่าง CLS และเรือ, ตรวจสอบพลังงานป้อน PFE รวมถึงร่วมทำรายงานภาคสนามหลังปฏิบัติงานเสร็จสิ้น.
+        วิศวกรภาคสนามที่มีประสบการณ์ทั้งงาน <b>Submarine Cable</b> และงานบนฝั่ง
+        เชี่ยวชาญการวัด/วิเคราะห์สัญญาณ DWDM, การดูแลระบบ PFE และการประสานงานภาคสนามกับเรือ/CLS/NOC
+        โฟกัสความแม่นยำ ปลอดภัย และความต่อเนื่องของระบบสื่อสารระดับประเทศ
       </p>
     </section>
 
-    <section class="card">
-      <div class="accent"><span class="dot"></span><h3>Field Operation Summary</h3></div>
-      <div class="projects">
+    <!-- FIELD OPS -->
+    <section class="card" id="fieldops">
+      <div class="accent"><span class="dot"></span><h3>Field Operations</h3></div>
+      <div class="grid-2">
         <article class="p-card">
-          <div class="p-meta">ครั้งที่ 1 — Asia Pacific Gateway (APG)</div>
+          <div class="p-meta">APG – Gulf of Thailand (REP)</div>
           <ul>
-            <li>เข้าร่วมภารกิจ REP (Repair) บนเรือซ่อมระบบ APG บริเวณอ่าวไทย</li>
-            <li>ทำการตรวจสอบสัญญาณ OTDR ก่อนและหลังการซ่อม พร้อมเปรียบเทียบค่าการสูญเสีย</li>
-            <li>ร่วมคำนวณและตรวจสอบแรงดัน/กระแสในระบบ PFE เพื่อให้ค่ากระแสรีพีตเตอร์คงที่</li>
-            <li>ประสานงานกับ CLS และ NOC สำหรับการปรับการจ่ายไฟและการทดสอบสัญญาณ</li>
+            <li>OTDR before/after, ORL/Atten compare vs baseline</li>
+            <li>ร่วมตรวจสอบแรงดัน/กระแส PFE ให้กระแสรีพีตเตอร์คงที่</li>
+            <li>ประสาน CLS/NOC ช่วง power off/on และ service test</li>
           </ul>
         </article>
-
         <article class="p-card">
-          <div class="p-meta">ครั้งที่ 2 — Asia Pacific Gateway (APG)</div>
+          <div class="p-meta">APG – Post-Repair Verification</div>
           <ul>
-            <li>เข้าร่วมการตรวจสอบซ้ำเส้นทาง APG หลังซ่อมเสร็จ เพื่อยืนยันความเสถียรของระบบ</li>
-            <li>ตรวจสอบผลการวัดค่า ORL และ Attenuation จาก SLTE เทียบกับ baseline เดิม</li>
-            <li>ร่วมทำรายงานผลภาคสนาม (Post Operation Report) และสรุปผลให้กับฝ่าย Network</li>
-            <li>ปฏิบัติตามมาตรฐาน HSE บนเรือ และรายงานความปลอดภัยรายวัน</li>
+            <li>ยืนยันเสถียรภาพสัญญาณหลังซ่อม พร้อมสรุปรายงานภาคสนาม</li>
+            <li>ติดตามค่าบน SLTE (OSNR, BER trend) หลังคืนวงจร</li>
           </ul>
         </article>
       </div>
     </section>
 
-    <section class="card">
-      <div class="accent"><span class="dot"></span><h3>Next Step</h3></div>
-      <p>(เตรียมเพิ่มภาพกิจกรรม, เอกสารผลการทดสอบ, และรายละเอียดเรือแต่ละลำในขั้นตอนต่อไป)</p>
+    <!-- NETWORK / LAB -->
+    <section class="card" id="network">
+      <div class="accent"><span class="dot"></span><h3>Network & Lab Work</h3></div>
+      <ul class="bullets">
+        <li>ทดสอบ SLTE (Nokia 1830 PSS-16ii) / DWDM λ 100G</li>
+        <li>วัด ORL/OSNR/BER, ตรวจ Alarm, วิเคราะห์ Power Budget</li>
+        <li>ทำงานกับ OADM/ROADM, Path optimization</li>
+      </ul>
     </section>
-  </div>
+
+    <!-- PROJECTS (หลายเรื่อง ไม่จำกัดสายเรือ) -->
+    <section class="card" id="projects">
+      <div class="accent"><span class="dot"></span><h3>Projects & Experiences</h3></div>
+      <div class="grid-3">
+        <article class="p-card">
+          <h4>Chalie2 Dashboard</h4>
+          <p>พัฒนา dashboard (PHP/JS) สำหรับงานติดตาม ticket/ops ให้ทีมใช้งานจริง</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+        </article>
+        <article class="p-card">
+          <h4>Fiber Monitoring</h4>
+          <p>ตั้งค่า/แปลผล OTDR trace, ORL/Atten monitor, ทำรายงาน baseline</p>
+          <div class="tags"><span>OTDR</span><span>Fiber</span></div>
+        </article>
+        <article class="p-card">
+          <h4>Power Re-config</h4>
+          <p>ร่วมปรับ PFE และตรวจความปลอดภัย HSE ใน onsite operation</p>
+          <div class="tags"><span>PFE</span><span>Safety</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section class="card" id="certs">
+      <div class="accent"><span class="dot"></span><h3>Certificates</h3></div>
+      <div class="cert-grid">
+        <!-- ใส่รูปใบประกาศของจริงใน images/ แล้วแก้ src -->
+        <div class="cert-item">
+          <img src="images/cert_bosiet.jpg" alt="BOSIET/HUET">
+          <p>BOSIET + HUET with EBS</p>
+        </div>
+        <div class="cert-item">
+          <img src="images/cert_otdr.jpg" alt="OTDR Training">
+          <p>OTDR & Fiber Test</p>
+        </div>
+        <div class="cert-item">
+          <img src="images/cert_dwdm.jpg" alt="DWDM Workshop">
+          <p>DWDM / Submarine Cable</p>
+        </div>
+      </div>
+      <div class="center mt-12">
+        <a class="btn" href="#" onclick="alert('กำลังเตรียมหน้า certificates.html'); return false;">View All</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card" id="contact">
+      <div class="accent"><span class="dot"></span><h3>Contact</h3></div>
+      <p>
+        📧 <b>Email:</b> <a href="mailto:piyapong@example.com">piyapong@example.com</a><br>
+        📍 <b>Location:</b> Songkhla, Thailand<br>
+        🌐 <b>Website:</b> <a href="https://piyapong-pragud.github.io" target="_blank" rel="noopener">piyapong-pragud.github.io</a>
+      </p>
+      <div class="actions">
+        <button class="btn" id="btnPrint">Print / Save PDF</button>
+        <button class="btn ghost" id="toTop">↑ Top</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Piyapong Damkaew — Yellow × Gray</small>
+  </footer>
 </body>
 </html>
