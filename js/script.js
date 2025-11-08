@@ -1,16 +1,27 @@
-
-// เปลี่ยนข้อความ badge เมื่อโหลดหน้าเสร็จ
+// อัปเดตเวลาใน badge + ปีใน footer
 document.addEventListener('DOMContentLoaded', () => {
-  const badge = document.querySelector('.badge');
+  // เวลาอัปเดต
+  const badge = document.getElementById('badgeUpdated');
   if (badge) {
     const t = new Date().toLocaleString();
-    badge.textContent = `Submarine Cable Engineer • APG System Operations • Updated ${t}`;
-    badge.title = 'ข้อความนี้ถูกอัปเดตด้วย JavaScript';
+    badge.textContent = `Yellow × Gray • Updated ${t}`;
+  }
+  // ปีใน footer
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // ปุ่มพิมพ์เป็น PDF
+  const printBtn = document.getElementById('btnPrint');
+  if (printBtn) printBtn.addEventListener('click', () => window.print());
+
+  // ปุ่มกลับขึ้นบน
+  const toTop = document.getElementById('toTop');
+  if (toTop) toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // เมนูมือถือ
+  const nav = document.querySelector('.nav');
+  const hamburger = document.getElementById('hamburger');
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => nav.classList.toggle('open'));
   }
 });
-
-// ปุ่มเล็ก ๆ ไว้กลับขึ้นบน (ถ้าจะใช้ ใส่ <button id="toTop">↑ Top</button> ใน HTML)
-const toTopBtn = document.getElementById('toTop');
-if (toTopBtn) {
-  toTopBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-}
