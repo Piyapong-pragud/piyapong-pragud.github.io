@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Certificates – Piyapong Damkaew</title>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <a class="brand" href="index.html#top">Piyapong D.</a>
+    <nav id="navMenu">
+      <a href="index.html#about">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="index.html#fieldops">Field Ops</a>
+      <a href="index.html#network">Network/Lab</a>
+      <a class="active" href="certificates.html">Certificates</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="menu">☰</button>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="hero hero-compact">
+    <div class="hero-text">
+      <h1>Certificates</h1>
+      <p class="subtitle">ใบรับรอง/การอบรม ที่เกี่ยวข้องกับงานภาคสนามและใต้น้ำ</p>
+      <div class="badges">
+        <span class="badge badge-primary" id="badgeUpdated">Updated …</span>
+        <a class="btn ghost" href="index.html">← Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="card">
+      <div class="accent"><span class="dot"></span><h3>Professional Certifications</h3></div>
+      <div class="cert-grid">
+        <!-- เปลี่ยน src เป็นไฟล์จริงใน /images -->
+        <div class="cert-item">
+          <img src="images/cert_bosiet.jpg" alt="BOSIET + HUET">
+          <p><b>BOSIET + HUET with EBS</b><br><span class="muted">Validity: 2025–2028</span></p>
+        </div>
+        <div class="cert-item">
+          <img src="images/cert_stcw.jpg" alt="STCW">
+          <p><b>STCW Basic Safety Training</b><br><span class="muted">Validity: 2025–2028</span></p>
+        </div>
+        <div class="cert-item">
+          <img src="images/cert_otdr.jpg" alt="OTDR Training">
+          <p><b>OTDR & Fiber Testing</b><br><span class="muted">Optical Measurement</span></p>
+        </div>
+        <div class="cert-item">
+          <img src="images/cert_dwdm.jpg" alt="DWDM Course">
+          <p><b>DWDM / Submarine Cable Workshop</b><br><span class="muted">Nokia / Vendor</span></p>
+        </div>
+        <!-- เพิ่มได้ไม่จำกัด: คัดลอกบล็อก cert-item แล้วแก้รูป/ข้อความ -->
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="accent"><span class="dot"></span><h3>Notes</h3></div>
+      <ul class="bullets">
+        <li>สามารถคลิกภาพเพื่อเปิดไฟล์ใบเซอร์แบบละเอียด (ถ้าต้องการ ให้ลิงก์ไปไฟล์ PDF)</li>
+        <li>แนะนำให้บีบอัดรูปเป็น JPG/WebP ขนาด ~1200px และไฟล์ไม่เกิน ~300KB</li>
+      </ul>
+      <div class="actions">
+        <button class="btn" id="btnPrint">Print / Save PDF</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Piyapong Damkaew — Certificates</small>
+  </footer>
+</body>
+</html>
