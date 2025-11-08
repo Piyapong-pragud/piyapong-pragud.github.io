@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const badge = document.querySelector('.badge');
   if (badge) {
     const t = new Date().toLocaleString();
-    badge.textContent = `Yellow × Gray • Updated ${t}`;
+    badge.textContent = `Submarine Cable Engineer • APG System Operations • Updated ${t}`;
     badge.title = 'ข้อความนี้ถูกอัปเดตด้วย JavaScript';
   }
 });
