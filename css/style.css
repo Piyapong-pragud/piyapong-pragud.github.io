@@ -20,3 +20,7 @@ a{color:var(--brand);text-decoration:none}
 .p-card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(241,196,15,.04),rgba(241,196,15,.0));border-radius:16px;padding:16px}
 .p-meta{color:var(--muted);font-size:13px}
 .footer{margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;color:var(--muted)}
+.avatar{
+  width:120px;height:120px;border-radius:50%;
+  object-fit:cover;border:2px solid var(--brand);
+}
