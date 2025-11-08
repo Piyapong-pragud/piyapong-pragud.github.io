@@ -78,3 +78,7 @@ a{color:var(--brand);text-decoration:none}
   .hamburger{display:block}
   .nav.open nav{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:56px;background:#111;border-bottom:1px solid var(--line);padding:10px 16px}
 }
+/* Page variants */
+.hero-compact{padding:18px 24px}
+.nav nav a.active{color:#fff;font-weight:700}
+.muted{color:var(--muted)}
