@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const badge = document.getElementById('badgeUpdated');
   if (badge) {
     const t = new Date().toLocaleString();
-    badge.textContent = `Yellow × Gray • Updated ${t}`;
+    badge.textContent = `portfolio • Updated ${t}`;
   }
   // ปีใน footer
   const y = document.getElementById('year');
