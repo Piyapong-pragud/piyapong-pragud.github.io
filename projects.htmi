@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects – Piyapong Damkaew</title>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <a class="brand" href="index.html#top">Piyapong D.</a>
+    <nav id="navMenu">
+      <a href="index.html#about">About</a>
+      <a class="active" href="projects.html">Projects</a>
+      <a href="index.html#fieldops">Field Ops</a>
+      <a href="index.html#network">Network/Lab</a>
+      <a href="certificates.html">Certificates</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="menu">☰</button>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section class="hero hero-compact">
+    <div class="hero-text">
+      <h1>Projects & Experiences</h1>
+      <p class="subtitle">สรุปผลงาน/ประสบการณ์ ทั้งสายเรือ ใต้น้ำ และงานบนฝั่ง</p>
+      <div class="badges">
+        <span class="badge badge-primary" id="badgeUpdated">Updated …</span>
+        <a class="btn ghost" href="index.html">← Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- CATEGORY: Submarine / Field -->
+    <section class="card">
+      <div class="accent"><span class="dot"></span><h3>Submarine & Field Operations</h3></div>
+      <div class="grid-3">
+        <article class="p-card">
+          <h4>APG Repair – Gulf of Thailand</h4>
+          <p>ภารกิจ REP: วัด OTDR ก่อน/หลังซ่อม, เปรียบเทียบ ORL/Atten, ประสาน CLS/NOC ช่วงปิด-เปิดไฟ</p>
+          <div class="tags"><span>APG</span><span>OTDR</span><span>PFE</span></div>
+        </article>
+        <article class="p-card">
+          <h4>Post-Repair Verification</h4>
+          <p>ติดตามเสถียรภาพสัญญาณ, ตรวจ OSNR/BER บน SLTE, ทำรายงาน post-operation</p>
+          <div class="tags"><span>SLTE</span><span>OSNR</span><span>BER</span></div>
+        </article>
+        <article class="p-card">
+          <h4>SKL Maintenance Support</h4>
+          <p>สนับสนุนงานซ่อม SKL ภาคใต้ ร่วมตรวจค่า power budget และสภาพเส้นทาง</p>
+          <div class="tags"><span>SKL</span><span>Budget</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CATEGORY: Network / Lab -->
+    <section class="card">
+      <div class="accent"><span class="dot"></span><h3>Network / Lab</h3></div>
+      <div class="grid-3">
+        <article class="p-card">
+          <h4>DWDM λ 100G on 1830 PSS-16ii</h4>
+          <p>ตั้งค่าพอร์ท/แลมบ์ดา, ตรวจ alarm, วิเคราะห์เส้นทาง ROADM</p>
+          <div class="tags"><span>DWDM</span><span>Nokia 1830</span></div>
+        </article>
+        <article class="p-card">
+          <h4>Fiber Monitoring Program</h4>
+          <p>จัด baseline, วิเคราะห์ trace, ออกรายงาน ORL/Atten รายเดือน</p>
+          <div class="tags"><span>OTDR</span><span>Baseline</span></div>
+        </article>
+        <article class="p-card">
+          <h4>Power Re-config & Safety</h4>
+          <p>ร่วมปรับ/ตรวจพลังงาน PFE ตามมาตรฐาน HSE ภาคสนาม</p>
+          <div class="tags"><span>PFE</span><span>HSE</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CATEGORY: Software / Tools -->
+    <section class="card">
+      <div class="accent"><span class="dot"></span><h3>Software / Internal Tools</h3></div>
+      <div class="grid-3">
+        <article class="p-card">
+          <h4>Chalie2 Dashboard</h4>
+          <p>เว็บติดตามงาน (PHP/JS) สำหรับทีมปฏิบัติการ: ticket, status, popup แจ้งเตือน</p>
+          <div class="tags"><span>PHP</span><span>JS</span><span>UI/UX</span></div>
+        </article>
+        <article class="p-card">
+          <h4>Reporting Templates</h4>
+          <p>เทมเพลตรายงาน OTDR / Post-Operation รายงานสรุปพร้อมกราฟ</p>
+          <div class="tags"><span>Docs</span><span>Charts</span></div>
+        </article>
+        <article class="p-card">
+          <h4>Field Evidence Archive</h4>
+          <p>โครงจัดเก็บภาพ/เอกสารภาคสนามให้ค้นหาง่าย (โฟลเดอร์/ชื่อไฟล์มาตรฐาน)</p>
+          <div class="tags"><span>Archive</span><span>Standards</span></div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <small>© <span id="year"></span> Piyapong Damkaew — Projects</small>
+  </footer>
+</body>
+</html>
