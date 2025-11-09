@@ -29,7 +29,7 @@ a{color:var(--brand);text-decoration:none}
   align-items: center;
   padding: 40px 20px;
   margin: 40px 0;
-  background: linear-gradient(180deg, rgba(241,196,15,.08), rgba(241,196,15,0));
+  background: linear-gradient(90deg, rgba(241,196,15,0.06), rgba(241,196,15,0) 60%);
   border: 1px solid var(--line);
   border-radius: 22px;
 }
