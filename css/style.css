@@ -22,18 +22,47 @@ a{color:var(--brand);text-decoration:none}
 .nav nav a{color:var(--muted)}
 .hamburger{display:none;background:transparent;border:1px solid var(--line);color:var(--text);padding:6px 10px;border-radius:8px}
 
-/* HERO */
-.hero{
-  margin:20px auto 6px;max-width:1100px;padding:24px;
-  display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;
-  background:linear-gradient(180deg,rgba(241,196,15,.08),rgba(241,196,15,.0));
-  border:1px solid var(--line);border-radius:22px;
+/* HERO (เวอร์ชันใหม่ – Flex) */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  margin: 40px 0;
+  background: linear-gradient(180deg, rgba(241,196,15,.08), rgba(241,196,15,0));
+  border: 1px solid var(--line);
+  border-radius: 22px;
 }
-.hero h1{margin:0 0 6px;font-size:42px;letter-spacing:.3px}
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  gap: 2rem;
+}
+.hero-text { flex: 1 1 500px; }
 .subtitle{color:var(--muted)}
 .hero-avatar .avatar{
   width:220px;height:220px;border-radius:50%;object-fit:cover;
   border:4px solid var(--brand);
+}
+.hero-images {
+  flex: 1 1 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+.hero-cover {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 2px solid var(--brand);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 .badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 .badge{
@@ -71,69 +100,50 @@ a{color:var(--brand);text-decoration:none}
 
 /* RESPONSIVE */
 @media (max-width:900px){
-  .hero{grid-template-columns:1fr}
   .grid-2{grid-template-columns:1fr}
   .grid-3{grid-template-columns:1fr}
   .nav nav{display:none}
   .hamburger{display:block}
-  .nav.open nav{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:56px;background:#111;border-bottom:1px solid var(--line);padding:10px 16px}
+  .nav.open nav{
+    display:flex;flex-direction:column;position:absolute;left:0;right:0;top:56px;
+    background:#111;border-bottom:1px solid var(--line);padding:10px 16px
+  }
 }
+
 /* Page variants */
 .hero-compact{padding:18px 24px}
 .nav nav a.active{color:#fff;font-weight:700}
 .muted{color:var(--muted)}
+
 /* ===== Modal Image Popup ===== */
 .modal {
   display: none; 
   position: fixed; 
   z-index: 1000; 
   padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.9);
+  left: 0; top: 0; width: 100%; height: 100%;
+  overflow: auto; background-color: rgba(0,0,0,0.9);
   text-align: center;
 }
-
 .modal-content {
-  margin: auto;
-  display: block;
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #000;
+  margin: auto; display: block;
+  max-width: 90%; max-height: 80vh;
+  border-radius: 10px; box-shadow: 0 0 20px #000;
 }
-
 .close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+  position: absolute; top: 20px; right: 35px;
+  color: #fff; font-size: 40px; font-weight: bold;
+  cursor: pointer; transition: 0.3s;
 }
+.close:hover { color: var(--brand); }
+#caption { margin-top: 15px; color: #ccc; font-size: 16px; }
 
-.close:hover {
-  color: #f1c40f;
-}
-
-/* ตัวหนังสือ caption */
-#caption {
-  margin-top: 15px;
-  color: #ccc;
-  font-size: 16px;
-}
+/* About + Education cards */
 .about-edu {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 24px;
-  align-items: start;
+  gap: 24px; align-items: start;
 }
-
 .about-edu .about, 
 .about-edu .education {
   background: #2e2e2e;
@@ -141,85 +151,10 @@ a{color:var(--brand);text-decoration:none}
   padding: 20px 24px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
+.about-edu ul { list-style: none; padding-left: 0; }
+.about-edu li { margin-bottom: 16px; line-height: 1.5; }
+.about-edu b { color: var(--brand); }
 
-.about-edu ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.about-edu li {
-  margin-bottom: 16px;
-  line-height: 1.5;
-}
-
-.about-edu b {
-  color: #f1c40f;
-}
-#education .edu-list {
-  margin: 12px 0 0;
-  padding-left: 18px;
-}
-#education .edu-list li {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-#education i { color: #bbb; } /* แปลอังกฤษให้โทนอ่อนลง อ่านสบาย */
-.hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin: 40px 0;
-}
-
-.hero-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.hero-left {
-  flex: 1 1 480px;
-}
-
-.hero-left h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-
-.hero-photo {
-  width: 100%;
-  max-width: 550px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  border: 2px solid var(--yellow);
-}
-.hero-cover {
-  width: 90%;                /* ลดจาก 100% → 90% เพื่อให้มี breathing space */
-  max-width: 480px;          /* จำกัดความกว้างสูงสุดของภาพ */
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  border: 2px solid var(--yellow);
-  object-fit: cover;         /* ปรับให้ภาพไม่ยืดผิดสัดส่วน */
-}
-.hero-images {
-  flex: 1 1 420px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.hero-cover {
-  width: 100%;
-  max-width: 420px;       /* ควบคุมขนาดภาพใหญ่สุด */
-  aspect-ratio: 16 / 9;   /* รักษาสัดส่วนภาพ */
-  border-radius: 16px;
-  object-fit: cover;
-  border: 2px solid var(--yellow);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
+#education .edu-list { margin: 12px 0 0; padding-left: 18px; }
+#education .edu-list li { margin-bottom: 10px; line-height: 1.6; }
+#education i { color: #bbb; }
