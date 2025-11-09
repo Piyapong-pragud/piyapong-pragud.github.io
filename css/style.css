@@ -198,3 +198,11 @@ a{color:var(--brand);text-decoration:none}
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   border: 2px solid var(--yellow);
 }
+.hero-cover {
+  width: 90%;                /* ลดจาก 100% → 90% เพื่อให้มี breathing space */
+  max-width: 480px;          /* จำกัดความกว้างสูงสุดของภาพ */
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  border: 2px solid var(--yellow);
+  object-fit: cover;         /* ปรับให้ภาพไม่ยืดผิดสัดส่วน */
+}
