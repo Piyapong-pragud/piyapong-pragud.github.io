@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Piyapong – Vocab Driller (Yellow Gray Theme)</title>
+  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F7C948'/><text x='50' y='60' font-size='60' text-anchor='middle' fill='%232E2E2E' font-family='Arial'>P</text></svg>">
+  <style>
+    :root{
+      --yellow:#F7C948; /* mellow yellow */
+      --yellow-2:#FFD54F; /* accent */
+      --gray-9:#111317;
+      --gray-8:#1c1f24;
+      --gray-7:#2E2E2E;
+      --gray-5:#5a5f66;
+      --gray-3:#C7CBD1;
+      --gray-1:#F5F6F8;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(247,201,72,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
+      color:#222; background:linear-gradient(180deg,var(--gray-1),#fff);
+    }
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:linear-gradient(90deg,var(--yellow),var(--yellow-2));
+      color:var(--gray-9);
+      box-shadow:var(--shadow);
+    }
+    .nav{
+      display:flex; align-items:center; gap:12px; padding:12px 16px; max-width:1100px; margin:0 auto;
+    }
+    .nav a{color:inherit; text-decoration:none; font-weight:600}
+    .badge{padding:6px 10px; border-radius:999px; background:rgba(0,0,0,.08); font-size:12px}
+
+    main{max-width:1100px; margin:22px auto; padding:0 16px 70px}
+
+    .board{display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
+    @media (max-width: 900px){ .board{grid-template-columns:1fr} }
+
+    .card{
+      background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
+      border:1px solid #eee;
+    }
+    .card .hd{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px dashed #eee}
+    .card .hd h2{margin:0; font-size:18px}
+    .card .bd{padding:18px}
+
+    /* Display panel */
+    .display{
+      min-height:280px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+      text-align:center; padding:28px; background:radial-gradient(60% 60% at 50% 0%, #fff 0%, #fff7d6 100%);
+      border:1px dashed rgba(0,0,0,.06); border-radius:calc(var(--radius) - 4px);
+    }
+    .word{font-size:clamp(32px, 7vw, 64px); font-weight:800; letter-spacing:.5px; color:var(--gray-9)}
+    .trans{font-size:clamp(18px,3.2vw,28px); color:var(--gray-7); opacity:.9}
+    .phon{font-size:clamp(14px,2.2vw,18px); color:var(--gray-5)}
+
+    /* Controls */
+    .controls{display:flex; flex-wrap:wrap; align-items:center; gap:10px; justify-content:center; padding-top:10px}
+    .btn{
+      appearance:none; border:none; background:var(--gray-9); color:#fff; padding:10px 14px; border-radius:14px; font-weight:700;
+      display:inline-flex; align-items:center; gap:8px; cursor:pointer; transition:.2s transform,.2s opacity; box-shadow:0 6px 14px rgba(0,0,0,.12)
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.secondary{background:var(--yellow); color:var(--gray-9)}
+    .btn.ghost{background:#fff; color:#222; border:1px solid #e9e9e9}
+    .btn:disabled{opacity:.4; cursor:not-allowed}
+
+    .sliders{display:flex; flex-wrap:wrap; gap:16px; justify-content:center; padding:14px}
+    .sliders label{display:flex; align-items:center; gap:10px; font-size:14px; color:#444}
+    input[type="range"]{width:200px}
+
+    .utils{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:#555}
+    .utils .left{display:flex; gap:10px; align-items:center}
+    .pill{background:#fff8cf; border:1px solid #ffe27a; padding:6px 10px; border-radius:999px; font-weight:600; color:#6a5400}
+
+    /* Progress */
+    .progress{position:relative; height:10px; background:#eee; border-radius:999px; overflow:hidden}
+    .bar{position:absolute; inset:0; width:0%; background:linear-gradient(90deg,var(--yellow),var(--yellow-2));}
+
+    /* Loader / Importer */
+    .importer .bd{display:grid; gap:10px}
+    .importer .grid{display:grid; gap:10px; grid-template-columns:1fr 1fr}
+    @media (max-width: 900px){ .importer .grid{grid-template-columns:1fr} }
+    textarea{width:100%; min-height:180px; resize:vertical; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; padding:10px; border-radius:12px; border:1px solid #e6e6e6; background:#fff}
+    .hint{font-size:12px; color:#666}
+
+    footer{position:fixed; left:0; right:0; bottom:0; background:#fff; border-top:1px solid #eee; padding:10px 16px; display:flex; gap:12px; justify-content:center; align-items:center}
+    footer .kbd{font-family:ui-monospace,Menlo,monospace; background:#222; color:#fff; padding:4px 8px; border-radius:8px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="#" onclick="history.back();return false">⟵ Back</a>
+      <div class="badge">Piyapong Portfolio · Yellow Gray Theme</div>
+      <div style="margin-left:auto;font-weight:700">Vocab Driller</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="board">
+      <!-- Left: Display / Controls -->
+      <section class="card">
+        <div class="hd">
+          <h2>ฝึกจำศัพท์ทีละคำ</h2>
+          <div class="pill"><span id="counter">0 / 0</span></div>
+        </div>
+        <div class="bd">
+          <div class="display" id="display">
+            <div class="word" id="word">พร้อมเริ่ม</div>
+            <div class="phon" id="phonetic"></div>
+            <div class="trans" id="trans">นำเข้ารายการศัพท์ก่อน</div>
+          </div>
+
+          <div class="controls" style="margin-top:10px">
+            <button class="btn" id="prevBtn">⟵ ก่อนหน้า</button>
+            <button class="btn secondary" id="playBtn">▶ เล่นอัตโนมัติ</button>
+            <button class="btn" id="nextBtn">ถัดไป ⟶</button>
+            <button class="btn ghost" id="toggleTransBtn">👁️ ซ่อน/โชว์คำแปล</button>
+            <button class="btn ghost" id="shuffleBtn">🔀 สุ่มลำดับ</button>
+            <button class="btn ghost" id="resetBtn">♻️ เริ่มใหม่</button>
+          </div>
+
+          <div class="sliders">
+            <label>⏱️ ความเร็ว (วินาที/คำ)
+              <input type="range" min="0.6" max="6" step="0.2" id="speedRange" />
+              <span id="speedVal">2.0</span>
+            </label>
+            <label>🔤 ขนาดตัวอักษร
+              <input type="range" min="28" max="80" step="1" id="fontRange" />
+              <span id="fontVal">64px</span>
+            </label>
+          </div>
+
+          <div class="utils">
+            <div class="left">
+              <span>โหมด:</span>
+              <select id="mode">
+                <option value="en-th">อังกฤษ → แปลไทย</option>
+                <option value="th-en">ไทย → แปลอังกฤษ</option>
+              </select>
+            </div>
+            <div style="min-width:160px;flex:1">
+              <div class="progress"><div class="bar" id="bar"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right: Import / Manage List -->
+      <section class="card importer">
+        <div class="hd">
+          <h2>นำเข้าศัพท์ (CSV/บรรทัดละคำ)</h2>
+        </div>
+        <div class="bd">
+          <div class="grid">
+            <div>
+              <label class="hint">รูปแบบ 1: <b>อังกฤษ,ไทย[,สัทอักษร]</b> [คอมม่า/แท็บ ก็ได้] – ตัวอย่างอยู่ด้านล่าง</label>
+              <textarea id="pasteArea" placeholder="example, ตัวอย่าง, /ˈɛɡzɑːmpəl/\nability, ความสามารถ\n..."></textarea>
+              <div style="display:flex; gap:8px; margin-top:8px; align-items:center">
+                <button class="btn secondary" id="loadBtn">⬆️ โหลดจากข้อความ</button>
+                <button class="btn ghost" id="sampleBtn">🧪 เติมตัวอย่าง 20 คำ</button>
+              </div>
+            </div>
+            <div>
+              <label class="hint">รูปแบบ 2: อัปโหลดไฟล์ <b>.csv / .txt</b> (UTF‑8)</label>
+              <input type="file" id="fileInput" accept=".csv,.txt" />
+              <div class="hint" style="margin-top:8px">* คอลัมน์ที่รองรับ: <code>english,thai,phonetic</code></div>
+              <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap">
+                <button class="btn" id="saveLocalBtn">💾 บันทึกลงเครื่อง (localStorage)</button>
+                <button class="btn ghost" id="clearLocalBtn">🧹 ล้างข้อมูลที่บันทึก</button>
+              </div>
+            </div>
+          </div>
+          <div class="hint" style="margin-top:8px">Tip: กด <span class="kbd">Space</span> = เล่น/หยุด • <span class="kbd">←/→</span> = ก่อนหน้า/ถัดไป • <span class="kbd">S</span> = สุ่ม • <span class="kbd">H</span> = ซ่อน/โชว์คำแปล</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span>คีย์ลัด: <span class="kbd">Space</span> เล่น/หยุด · <span class="kbd">←</span>/<span class="kbd">→</span> เดินหน้า/ถอยหลัง · <span class="kbd">S</span> สุ่ม · <span class="kbd">H</span> ซ่อนคำแปล</span>
+  </footer>
+
+  <script>
+    // --- State ---
+    const state = {
+      list: [], // {en, th, phon}
+      idx: 0,
+      playing: false,
+      timer: null,
+      showTrans: true,
+      speed: parseFloat(localStorage.getItem('vd_speed') || '2.0'),
+      font: parseInt(localStorage.getItem('vd_font') || '64', 10),
+      mode: localStorage.getItem('vd_mode') || 'en-th',
+    };
+
+    // --- Elements ---
+    const el = {
+      word: document.getElementById('word'),
+      trans: document.getElementById('trans'),
+      phon: document.getElementById('phonetic'),
+      counter: document.getElementById('counter'),
+      bar: document.getElementById('bar'),
+      playBtn: document.getElementById('playBtn'),
+      nextBtn: document.getElementById('nextBtn'),
+      prevBtn: document.getElementById('prevBtn'),
+      toggleTransBtn: document.getElementById('toggleTransBtn'),
+      shuffleBtn: document.getElementById('shuffleBtn'),
+      resetBtn: document.getElementById('resetBtn'),
+      speedRange: document.getElementById('speedRange'),
+      speedVal: document.getElementById('speedVal'),
+      fontRange: document.getElementById('fontRange'),
+      fontVal: document.getElementById('fontVal'),
+      mode: document.getElementById('mode'),
+      pasteArea: document.getElementById('pasteArea'),
+      loadBtn: document.getElementById('loadBtn'),
+      fileInput: document.getElementById('fileInput'),
+      sampleBtn: document.getElementById('sampleBtn'),
+      saveLocalBtn: document.getElementById('saveLocalBtn'),
+      clearLocalBtn: document.getElementById('clearLocalBtn'),
+      display: document.getElementById('display'),
+    };
+
+    // --- Helpers ---
+    function parseLines(text){
+      const rows = text.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+      const out=[];
+      for(const r of rows){
+        const parts = r.split(/[\t,]+/).map(s=>s.trim());
+        if(parts.length>=2){
+          out.push({en: parts[0], th: parts[1], phon: parts[2]||''});
+        }
+      }
+      return out;
+    }
+
+    function updateDisplay(){
+      const total = state.list.length;
+      if(total===0){
+        el.word.textContent = 'นำเข้ารายการศัพท์ก่อน';
+        el.trans.textContent = 'Paste หรือ Upload รายการทางด้านขวา';
+        el.phon.textContent = '';
+        el.counter.textContent = '0 / 0';
+        el.bar.style.width = '0%';
+        return;
+      }
+      if(state.idx<0) state.idx=0; if(state.idx>=total) state.idx=total-1;
+      const item = state.list[state.idx];
+      const isEnTh = state.mode === 'en-th';
+      const head = isEnTh ? item.en : item.th;
+      const sub = isEnTh ? item.th : item.en;
+      el.word.textContent = head;
+      el.trans.textContent = state.showTrans ? sub : '•••';
+      el.phon.textContent = item.phon || '';
+      el.counter.textContent = (state.idx+1) + ' / ' + total;
+      el.bar.style.width = ((state.idx+1)/total*100).toFixed(1)+'%';
+      el.display.style.setProperty('--zoom', state.font);
+      el.word.style.fontSize = state.font + 'px';
+      el.trans.style.display = state.showTrans ? 'block' : 'block'; // keep space
+    }
+
+    function next(){
+      if(state.list.length===0) return;
+      state.idx = (state.idx + 1) % state.list.length;
+      localStorage.setItem('vd_idx', String(state.idx));
+      updateDisplay();
+    }
+    function prev(){
+      if(state.list.length===0) return;
+      state.idx = (state.idx - 1 + state.list.length) % state.list.length;
+      localStorage.setItem('vd_idx', String(state.idx));
+      updateDisplay();
+    }
+
+    function play(){
+      if(state.playing || state.list.length===0) return;
+      state.playing = true; el.playBtn.textContent = '⏸ หยุด';
+      state.timer = setInterval(next, state.speed*1000);
+    }
+    function pause(){
+      state.playing = false; el.playBtn.textContent = '▶ เล่นอัตโนมัติ';
+      if(state.timer) clearInterval(state.timer); state.timer=null;
+    }
+    function togglePlay(){ state.playing ? pause() : play(); }
+
+    function shuffle(){
+      // Fisher-Yates
+      for(let i=state.list.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [state.list[i],state.list[j]]=[state.list[j],state.list[i]];
+      }
+      state.idx=0; updateDisplay();
+    }
+
+    function loadFromText(){
+      const txt = el.pasteArea.value.trim();
+      const arr = parseLines(txt);
+      if(arr.length){
+        state.list = arr; state.idx = 0; updateDisplay();
+      } else { alert('ไม่พบข้อมูลที่นำเข้า'); }
+    }
+
+    function loadFromFile(file){
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = e=>{
+        el.pasteArea.value = e.target.result;
+        loadFromText();
+      };
+      reader.readAsText(file,'utf-8');
+    }
+
+    function saveLocal(){
+      if(state.list.length===0){ alert('ยังไม่มีรายการให้บันทึก'); return; }
+      localStorage.setItem('vd_list', JSON.stringify(state.list));
+      localStorage.setItem('vd_idx', String(state.idx));
+      alert('บันทึกรายการไว้ในเครื่องแล้ว');
+    }
+    function clearLocal(){
+      localStorage.removeItem('vd_list');
+      localStorage.removeItem('vd_idx');
+      alert('ล้างข้อมูลที่บันทึกแล้ว');
+    }
+
+    function reset(){ state.idx=0; updateDisplay(); }
+
+    // --- Events ---
+    el.playBtn.addEventListener('click', togglePlay);
+    el.nextBtn.addEventListener('click', ()=>{ pause(); next(); });
+    el.prevBtn.addEventListener('click', ()=>{ pause(); prev(); });
+    el.toggleTransBtn.addEventListener('click', ()=>{ state.showTrans=!state.showTrans; localStorage.setItem('vd_show', state.showTrans?'1':'0'); updateDisplay(); });
+    el.shuffleBtn.addEventListener('click', ()=>{ pause(); shuffle(); });
+    el.resetBtn.addEventListener('click', ()=>{ pause(); reset(); });
+
+    el.speedRange.addEventListener('input', e=>{
+      state.speed = parseFloat(e.target.value); el.speedVal.textContent = state.speed.toFixed(1);
+      localStorage.setItem('vd_speed', String(state.speed));
+      if(state.playing){ pause(); play(); }
+    });
+    el.fontRange.addEventListener('input', e=>{
+      state.font = parseInt(e.target.value,10); el.fontVal.textContent = state.font + 'px';
+      localStorage.setItem('vd_font', String(state.font));
+      updateDisplay();
+    });
+    el.mode.addEventListener('change', e=>{ state.mode = e.target.value; localStorage.setItem('vd_mode', state.mode); updateDisplay(); });
+
+    el.loadBtn.addEventListener('click', ()=>{ pause(); loadFromText(); saveLocal(); });
+    el.fileInput.addEventListener('change', e=>{ pause(); loadFromFile(e.target.files[0]); saveLocal(); e.target.value=''; });
+    el.sampleBtn.addEventListener('click', ()=>{
+      el.pasteArea.value = `ability, ความสามารถ, /əˈbɪləti/\naccurate, ถูกต้องแม่นยำ\nacquire, ได้มา / เรียนรู้\nadapt, ปรับตัว\nadvance, ก้าวหน้า\nadvice, คำแนะนำ\naffect, มีผลต่อ\nafford, สามารถซื้อได้\nagreement, ข้อตกลง\nallow, อนุญาต\nalternative, ทางเลือก\namount, จำนวน\nannual, รายปี\nappeal, ดึงดูด / อุทธรณ์\nappropriate, เหมาะสม\narrange, จัดการ / จัดเตรียม\nassess, ประเมิน\nassist, ช่วยเหลือ\nassume, สมมติ\nattempt, พยายาม`;
+      loadFromText(); saveLocal();
+    });
+    el.saveLocalBtn.addEventListener('click', saveLocal);
+    el.clearLocalBtn.addEventListener('click', clearLocal);
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', e=>{
+      if(['INPUT','TEXTAREA'].includes(e.target.tagName)) return; // ignore typing areas
+      if(e.code==='Space'){ e.preventDefault(); togglePlay(); }
+      if(e.key==='ArrowRight'){ e.preventDefault(); pause(); next(); }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); pause(); prev(); }
+      if(e.key.toLowerCase()==='s'){ pause(); shuffle(); }
+      if(e.key.toLowerCase()==='h'){ state.showTrans=!state.showTrans; localStorage.setItem('vd_show', state.showTrans?'1':'0'); updateDisplay(); }
+    });
+
+    // --- Init from localStorage ---
+    (function init(){
+      el.speedRange.value = state.speed; el.speedVal.textContent = state.speed.toFixed(1);
+      el.fontRange.value = state.font; el.fontVal.textContent = state.font + 'px';
+      el.mode.value = state.mode;
+      state.showTrans = (localStorage.getItem('vd_show')||'1')==='1';
+      try{
+        const saved = localStorage.getItem('vd_list');
+        if(saved){ state.list = JSON.parse(saved); }
+        const savedIdx = parseInt(localStorage.getItem('vd_idx')||'0',10);
+        if(!isNaN(savedIdx)) state.idx = savedIdx;
+      }catch(err){ console.warn(err); }
+      updateDisplay();
+    })();
+  </script>
+</body>
+</html>
