@@ -29,9 +29,10 @@ a{color:var(--brand);text-decoration:none}
   align-items: center;
   padding: 40px 20px;
   margin: 40px 0;
-  background: linear-gradient(90deg, rgba(241,196,15,0.06), rgba(241,196,15,0) 60%);
+  background: linear-gradient(90deg, rgba(241,196,15,0.05), rgba(0,0,0,0.6));
   border: 1px solid var(--line);
   border-radius: 22px;
+  margin-bottom: 60px;
 }
 .hero-content {
   display: flex;
@@ -66,8 +67,9 @@ a{color:var(--brand);text-decoration:none}
 }
 .badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 .badge{
-  display:inline-block;background:var(--brand);color:#111;font-weight:800;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);display:inline-block;background:var(--brand);color:#111;font-weight:800;
   padding:10px 16px;border-radius:999px;white-space:nowrap
+ 
 }
 .badge-primary{box-shadow:0 6px 0 0 rgba(241,196,15,.25)}
 
