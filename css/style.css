@@ -127,3 +127,31 @@ a{color:var(--brand);text-decoration:none}
   color: #ccc;
   font-size: 16px;
 }
+.about-edu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.about-edu .about, 
+.about-edu .education {
+  background: #2e2e2e;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.about-edu ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-edu li {
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.about-edu b {
+  color: #f1c40f;
+}
