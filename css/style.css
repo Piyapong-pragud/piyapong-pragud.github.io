@@ -206,3 +206,20 @@ a{color:var(--brand);text-decoration:none}
   border: 2px solid var(--yellow);
   object-fit: cover;         /* ปรับให้ภาพไม่ยืดผิดสัดส่วน */
 }
+.hero-images {
+  flex: 1 1 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.hero-cover {
+  width: 100%;
+  max-width: 420px;       /* ควบคุมขนาดภาพใหญ่สุด */
+  aspect-ratio: 16 / 9;   /* รักษาสัดส่วนภาพ */
+  border-radius: 16px;
+  object-fit: cover;
+  border: 2px solid var(--yellow);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
