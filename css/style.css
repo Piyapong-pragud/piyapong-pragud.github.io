@@ -155,3 +155,12 @@ a{color:var(--brand);text-decoration:none}
 .about-edu b {
   color: #f1c40f;
 }
+#education .edu-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+}
+#education .edu-list li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+#education i { color: #bbb; } /* แปลอังกฤษให้โทนอ่อนลง อ่านสบาย */
