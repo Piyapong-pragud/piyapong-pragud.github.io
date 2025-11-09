@@ -56,10 +56,18 @@
           <img src="images/cert_dwdm.jpg" alt="DWDM Course">
           <p><b>DWDM / Submarine Cable Workshop</b><br><span class="muted">Nokia / Vendor</span></p>
         </div>
-        <div class="cert-item">
-          <img src="images/cer_ccna.jpg" alt="CCNA Course">
-          <p><b>cisco / cisco CCNA</b><br><span class="muted">Cisco / Vendor</span></p>
-        </div>
+        <div class="cert-item" onclick="openModal('images/cer_ccna.jpg')">
+  <img src="images/cer_ccna.jpg" alt="CCNA Course">
+  <p><b>cisco / cisco CCNA</b><br><span class="muted">Cisco / Vendor</span></p>
+</div>
+
+<!-- Modal สำหรับแสดงภาพขยาย -->
+<div id="imgModal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
+  <div id="caption"></div>
+</div>
+
         <!-- เพิ่มได้ไม่จำกัด: คัดลอกบล็อก cert-item แล้วแก้รูป/ข้อความ -->
       </div>
     </section>
