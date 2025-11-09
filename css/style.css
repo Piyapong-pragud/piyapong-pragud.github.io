@@ -56,6 +56,11 @@ a{color:var(--brand);text-decoration:none}
   align-items: center;
   gap: 1.2rem;
 }
+.hero-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .hero-cover {
   width: 100%;
   max-width: 420px;
