@@ -173,3 +173,49 @@ a{color:var(--brand);text-decoration:none}
 #education .edu-list { margin: 12px 0 0; padding-left: 18px; }
 #education .edu-list li { margin-bottom: 10px; line-height: 1.6; }
 #education i { color: #bbb; }
+/* โหมด fullscreen จะซ่อนทุกส่วนที่ไม่ใช่ Vocabulary Card */
+.fullscreen-mode .topbar,
+.fullscreen-mode .menu,
+.fullscreen-mode .settings,
+.fullscreen-mode .controls,
+.fullscreen-mode .footer,
+.fullscreen-mode .back-btn,
+.fullscreen-mode .nav-bar,
+.fullscreen-mode .progress-box {
+    display: none !important;
+}
+
+/* ให้การ์ดศัพทเต็มพื้นที่ */
+.fullscreen-mode .word-card {
+    height: 90vh !important;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* ขยายขนาดคำ ให้ชัดขึ้น */
+.fullscreen-mode .word {
+    font-size: 4rem !important;
+}
+
+.fullscreen-mode .meaning {
+    font-size: 2rem !important;
+}
+
+.fullscreen-mode .example {
+    font-size: 1.6rem !important;
+    opacity: 0.8;
+}
+
+/* ปุ่ม fullscreen */
+.fs-btn {
+  padding: 8px 14px;
+  border: none;
+  background: #FFD000;
+  color: #333;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
