@@ -92,6 +92,52 @@
 
     footer{position:fixed; left:0; right:0; bottom:0; background:#fff; border-top:1px solid #eee; padding:10px 16px; display:flex; gap:12px; justify-content:center; align-items:center}
     footer .kbd{font-family:ui-monospace,Menlo,monospace; background:#222; color:#fff; padding:4px 8px; border-radius:8px}
+    /* โหมด fullscreen จะซ่อนทุกส่วนที่ไม่ใช่ Vocabulary Card */
+.fullscreen-mode .topbar,
+.fullscreen-mode .menu,
+.fullscreen-mode .settings,
+.fullscreen-mode .controls,
+.fullscreen-mode .footer,
+.fullscreen-mode .back-btn,
+.fullscreen-mode .nav-bar,
+.fullscreen-mode .progress-box {
+    display: none !important;
+}
+
+/* ให้การ์ดศัพทเต็มพื้นที่ */
+.fullscreen-mode .word-card {
+    height: 90vh !important;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* ขยายขนาดคำ ให้ชัดขึ้น */
+.fullscreen-mode .word {
+    font-size: 4rem !important;
+}
+
+.fullscreen-mode .meaning {
+    font-size: 2rem !important;
+}
+
+.fullscreen-mode .example {
+    font-size: 1.6rem !important;
+    opacity: 0.8;
+}
+
+/* ปุ่ม fullscreen */
+.fs-btn {
+  padding: 8px 14px;
+  border: none;
+  background: #FFD000;
+  color: #333;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
@@ -385,6 +431,26 @@
       }catch(err){ console.warn(err); }
       updateDisplay();
     })();
+    const btn = document.getElementById("fullscreenBtn");
+
+btn.addEventListener("click", () => {
+    let elem = document.documentElement;
+
+    if (!document.fullscreenElement) {
+        elem.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+});
+
+// เมื่อเข้า/ออก Fullscreen ให้เพิ่ม/ลบคลาส fullscreen-mode
+document.addEventListener("fullscreenchange", () => {
+    if (document.fullscreenElement) {
+        document.body.classList.add("fullscreen-mode");
+    } else {
+        document.body.classList.remove("fullscreen-mode");
+    }
+});
   </script>
 </body>
 </html>
